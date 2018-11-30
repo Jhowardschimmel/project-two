@@ -7,8 +7,4 @@ describe("canary test", function() {
   it("should pass this canary test", function() {
     expect(true).to.be.true;
   });
-
-  it("should fail this non-canary test", function() {
-    expect(Example()).to.be.instanceof(Object);
-  });
 });
