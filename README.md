@@ -23,14 +23,16 @@ Mapping interface which allows users to view and upload the location, images, an
   
 ## Full Stack Functions w/ APIs
 * AJAX (index.js in ./public/js) and Express (sever.js using ./routes)
-  - registerNewUser (POST to Users/)
-  - getAllArt (GET to Arts/)
-  - getArtInfo (GET to Arts/:id)
-  - addNewArt (POST to Arts/)
-  - queryArt (GET to Arts/:category&:artist&:user&:keyword)
-  - updateArtInfo (PUT to Arts/:id)
+  - registerNewUser (POST to Api/Users/)
+  - getAllArt (GET to Api/Arts/)
+  - getArtInfo (GET to Api/Arts/:id)
+  - addNewArt (POST to Api/Arts/)
+  - queryArt (GET to Api/Arts/:category&:artist&:user&:keyword)
+    * if input is autofill then will have to write a GET findall on field
+  - updateArtInfo (PUT to Api/Arts/:id)
 * Sequelize (index.js, art.js, and users.js in ./models)
   - User.findOrCreate
   - Art.findOrCreate
   - Art.findAll
   - Art.findById
+  - need to associate User and Art and Comments
