@@ -28,7 +28,7 @@ Mapping interface which allows users to view and upload the location, images, an
   - getArtInfo (GET to Api/Arts/:id)
   - addNewArt (POST to Api/Arts/)
   - queryArt (GET to Api/Arts/:category&:artist&:user&:keyword)
-    * if input is autofill then will have to write a GET findall on field
+    * if input is autofill then will have to write a GET findAll on the input field
   - updateArtInfo (PUT to Api/Arts/:id)
 * Sequelize (index.js, art.js, and users.js in ./models)
   - User.findOrCreate
