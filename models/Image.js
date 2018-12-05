@@ -1,6 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var Image = sequelize.define("Image", {
-    imageURL: DataTypes.STRING
+    imageURL: {
+      type: DataTypes.STRING,
+      isURL: true
+    }
   });
 
   Image.associate = function(models) {

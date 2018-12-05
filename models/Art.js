@@ -1,11 +1,26 @@
 module.exports = function(sequelize, DataTypes) {
   var Art = sequelize.define("Art", {
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    artist: DataTypes.STRING,
-    category: DataTypes.STRING,
-    lat: DataTypes.INTEGER,
-    long: DataTypes.INTEGER
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 5
+      }
+    },
+    artist: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max: 50
+      }
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    latitude: DataTypes.INTEGER,
+    longitude: DataTypes.INTEGER
   });
 
   Art.associate = function(models) {

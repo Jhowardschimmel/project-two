@@ -1,6 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
-    text: DataTypes.STRING
+    text: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 5
+      }
+    }
   });
   Comment.associate = function(models) {
     Comment.belongsTo(models.Art, {
