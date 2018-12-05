@@ -4,11 +4,11 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.Art.findAll({}).then(function(allArt) {
-      // res.json(allArt);
-      res.render("index", {
-        msg: "Welcome!",
-        art: allArt
-      });
+      res.json(allArt);
+      // res.render("index", {
+      //   msg: "Welcome!",
+      //   art: allArt
+      // });
     });
   });
 };

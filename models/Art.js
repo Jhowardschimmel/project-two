@@ -22,8 +22,8 @@ module.exports = function(sequelize, DataTypes) {
         defaultValue: "Uncategorized",
         allowNull: false
       },
-      latitude: DataTypes.FLOAT(11,7),
-      longitude: DataTypes.FLOAT(11,7),
+      latitude: DataTypes.FLOAT(11, 7),
+      longitude: DataTypes.FLOAT(11, 7),
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()")
