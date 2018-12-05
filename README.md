@@ -1,8 +1,12 @@
-# project-two
-Community Art Curator
+# Community Art Curator
+
+# Team Members
+* Austin Hickox / Frontend Handlebar and AJAX calls
+* Jesse Schimmel / SQL Database Management
+* Erik Woodworth / Backend Express + Sequelize Server
 
 ## Description
-Mapping interface which allows users to view and upload the location, images, and details of art in their community.
+This single-page web application will include a mapping interface which allows users to view and upload the location, images, and details of art in their community.
 
 ## User narratives
 * Viewer
