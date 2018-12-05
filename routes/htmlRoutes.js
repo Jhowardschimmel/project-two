@@ -3,12 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Art.findAll({}).then(function(allArt) {
-      res.json(allArt);
-      // res.render("index", {
-      //   msg: "Welcome!",
-      //   art: allArt
-      // });
+    db.Art.findAll({
+      include: db.User
+    }).then(function(allArt) {
+      // res.json(allArt);
+      res.render("index", {
+        msg: "Welcome!",
+        art: allArt
+      });
     });
   });
 };
