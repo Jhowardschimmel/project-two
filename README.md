@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 # Community Art Curator
 
 # Team Members
 * Austin Hickox / Frontend Handlebar and AJAX calls
 * Jesse Schimmel / SQL Database Management
 * Erik Woodworth / Backend Express + Sequelize Server
+=======
+# project-two
+Community Art Curator
+>>>>>>> 14d017e13c7d76efee27f63ac1cdd1945ccf46ad
 
 ## Description
 This single-page web application will include a mapping interface which allows users to view and upload the location, images, and details of art in their community.
@@ -32,11 +37,15 @@ This single-page web application will include a mapping interface which allows u
   - getArtInfo (GET to Api/Arts/:id)
   - addNewArt (POST to Api/Arts/)
   - queryArt (GET to Api/Arts/:category&:artist&:user&:keyword)
-    * if input is autofill then will have to write a GET findall on field
+    * if input is autofill then will have to write a GET findAll on the input field
   - updateArtInfo (PUT to Api/Arts/:id)
 * Sequelize (index.js, art.js, and users.js in ./models)
   - User.findOrCreate
   - Art.findOrCreate
   - Art.findAll
   - Art.findById
+<<<<<<< HEAD
   - need to associate User and Art and Comments
+=======
+  - need to associate User and Art and Comments
+>>>>>>> 14d017e13c7d76efee27f63ac1cdd1945ccf46ad
