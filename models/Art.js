@@ -7,5 +7,15 @@ module.exports = function(sequelize, DataTypes) {
     lat: DataTypes.INTEGER,
     long: DataTypes.INTEGER
   });
+
+  Art.associate = function(models) {
+    Art.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Art.hasMany(models.Comment);
+    Art.hasMany(models.Image);
+  };
   return Art;
 };
