@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Art = sequelize.define("Art", {
     name: DataTypes.STRING,
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         min: 5

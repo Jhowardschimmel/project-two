@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
     text: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         min: 5
