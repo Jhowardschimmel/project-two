@@ -17,15 +17,27 @@ module.exports = function(sequelize, DataTypes) {
     },
     category: {
       type: DataTypes.STRING,
+      defaultValue: "Uncategorized",
       allowNull: false
     },
-    latitude: DataTypes.INTEGER,
-    longitude: DataTypes.INTEGER
+    latitude: DataTypes.FLOAT(11,7),
+    longitude: DataTypes.FLOAT(11,7),
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("NOW()")
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("NOW()")
+    }
+  }, {
+    timestamps: true
   });
 
   Art.associate = function(models) {
     Art.belongsTo(models.User, {
       foreignKey: {
+        defaultValue: 1,
         allowNull: false
       }
     });
