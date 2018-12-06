@@ -1,5 +1,5 @@
 window.onload = function() {
-  var map = L.map("map").setView([33.7, -83.4], 13);
+  var map = L.map("map").setView([33.78, -84.35], 13);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
@@ -9,13 +9,22 @@ window.onload = function() {
   $.ajax({
     url: "/api/art",
     type: "GET"
-  }).then(function(data){
+  }).then(function(data) {
     var mapdata = data;
     console.log(mapdata);
-    for (i = 0; i < mapdata.length; i++){
+    for (i = 0; i < mapdata.length; i++) {
       L.marker([mapdata[i].latitude, mapdata[i].longitude])
         .addTo(map)
-        .bindPopup("<h3>" + mapdata[i].name + "</h3");
+        .bindPopup(
+          "<h5>" +
+            mapdata[i].name +
+            "</h5>" +
+            "<h6>by " +
+            mapdata[i].artist +
+            "</h6><em>Posted by " +
+            mapdata[i].User.username +
+            "</em>"
+        );
     }
   });
 };

@@ -3,9 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Art.findAll({
-      include: db.User
-    }).then(function(allArt) {
+    db.Art.findAll({}).then(function() {
       // res.json(allArt);
       res.render("index");
     });
