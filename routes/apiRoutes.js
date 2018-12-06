@@ -17,7 +17,9 @@ module.exports = function(app) {
 
   // Get all art
   app.get("/api/art", function(req, res) {
-    db.Art.findAll({}).then(function(artData) {
+    db.Art.findAll({
+      include: db.User
+    }).then(function(artData) {
       res.json(artData);
     });
   });

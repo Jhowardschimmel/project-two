@@ -7,10 +7,7 @@ module.exports = function(app) {
       include: db.User
     }).then(function(allArt) {
       // res.json(allArt);
-      res.render("index", {
-        msg: "Welcome!",
-        art: allArt
-      });
+      res.render("index");
     });
   });
 };
