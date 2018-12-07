@@ -1,24 +1,73 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Add a new user
+  app.post("/api/users", function(req, res) {
+    db.User.create(req.body).then(function(userData) {
+      res.json(userData);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Add new art
+  app.post("/api/art", function(req, res) {
+    db.Art.create(req.body).then(function(userData) {
+      res.json(userData);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Get all art
+  app.get("/api/art", function(req, res) {
+    db.Art.findAll({
+      include: db.User
+    }).then(function(artData) {
+      res.json(artData);
+    });
+  });
+
+  // Get a single piece of art
+  app.get("/api/art/:id", function(req, res) {
+    db.Art.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(artData) {
+      res.json(artData);
+    });
+  });
+
+  // Update art info
+  app.put("/api/art/:id", function(req, res) {
+    db.Art.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(artData) {
+      res.json(artData);
+    });
+  });
+
+  // Add new comment
+  app.post("/api/comment", function(req, res) {
+    db.Comment.create(req.body).then(function(commentData) {
+      res.json(commentData);
+    });
+  });
+
+  // Add an image
+  app.post("/api/images", function(req, res) {
+    db.Image.create(req.body).then(function(imageData) {
+      res.json(imageData);
+    });
+  });
+
+  // Delete an image
+  app.delete("/api/images/:id", function(req, res) {
+    db.Image.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(imageData) {
+      res.json(imageData);
     });
   });
 };
