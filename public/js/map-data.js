@@ -21,7 +21,9 @@ window.onload = function() {
             "</h5>" +
             "<h6>by " +
             mapdata[i].artist +
-            "</h6><em>Posted by " +
+            "</h6><p>" +
+            mapdata[i].description +
+            "<p><br><em>Posted by " +
             mapdata[i].User.username +
             "</em>"
         );
