@@ -1,0 +1,86 @@
+body {
+    background-image: url(../images/diamond_upholstery.png)
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../fonts/sprayme.ttf);
+}
+
+.btn-blue {
+    background-color: #0764A5;
+    color: white;
+}
+
+/* Sign-In Page */
+
+#signInWithHeader {
+    text-align: center;
+}
+
+#signInDiv {
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px 30px 0px 30px;
+}
+
+#signInHeader {
+    font-family: myFont;
+    color: #0764A5;
+}
+
+#logInButton {
+    background-color: #0764A5;
+    color: white;
+    width: 100px;
+}
+
+/* Sign-Up Page */
+
+#signUpWithHeader {
+    text-align: center;
+}
+
+#signUpDiv {
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px 30px 0px 30px;
+}
+
+#signUpHeader {
+    font-family: myFont;
+    color: #0764A5;
+}
+
+#signUpButton {
+    background-color: #0764A5;
+    color: white;
+    width: 100px;
+}
+
+/* Home Page */
+
+#leftDiv {
+    padding: 30px;
+}
+
+#mapDiv {
+    height: 910px
+}
+
+#contentDiv {
+    padding: 50px 30px 0px 30px;
+}
+
+#imagesDiv {
+    height: 300px;
+}
+
+.btn-block {
+    font-family: myFont;
+    font-size: 30px;
+}
