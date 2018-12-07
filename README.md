@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 # Community Art Curator
 
 # Team Members
 * Austin Hickox / Frontend Handlebar and AJAX calls
 * Jesse Schimmel / SQL Database Management
 * Erik Woodworth / Backend Express + Sequelize Server
-=======
-# project-two
-Community Art Curator
->>>>>>> 14d017e13c7d76efee27f63ac1cdd1945ccf46ad
 
 ## Description
 This single-page web application will include a mapping interface which allows users to view and upload the location, images, and details of art in their community.
@@ -44,8 +39,4 @@ This single-page web application will include a mapping interface which allows u
   - Art.findOrCreate
   - Art.findAll
   - Art.findById
-<<<<<<< HEAD
   - need to associate User and Art and Comments
-=======
-  - need to associate User and Art and Comments
->>>>>>> 14d017e13c7d76efee27f63ac1cdd1945ccf46ad
