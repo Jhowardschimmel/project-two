@@ -6,7 +6,7 @@ window.onload = function () {
       "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
   }).addTo(map);
 
-  map.on("click", function (event) {
+  map.on("click", function(event) {
     console.log(event.latlng);
   });
 
