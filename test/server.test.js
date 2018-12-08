@@ -24,7 +24,7 @@ describe("GET /api/examples", function() {
       { text: "Second Example", description: "Second Description" }
     ]).then(function() {
       // Request the route that returns all examples
-      request.get("/api/examples").end(function(err, res) {
+      request.get("/api/art").end(function(err, res) {
         var responseStatus = res.status;
         var responseBody = res.body;
 
