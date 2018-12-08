@@ -1,3 +1,4 @@
+require("dotenv").config({ path: __dirname + ".env.test" });
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var server = require("../server");
@@ -12,16 +13,28 @@ var request;
 describe("GET /api/examples", function() {
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
-  beforeEach(function() {
+  beforeEach(function(done) {
     request = chai.request(server);
-    return db.sequelize.sync({ force: true });
+    db.sequelize.sync({ force: true }).then(function() {
+      done();
+    });
   });
 
   it("should find all examples", function(done) {
     // Add some examples to the db to test with
-    db.Example.bulkCreate([
-      { text: "First Example", description: "First Description" },
-      { text: "Second Example", description: "Second Description" }
+    db.Art.bulkCreate([
+      {
+        name: "First Example",
+        description: "First Description",
+        latitude: 33.78,
+        longitude: -84.35
+      },
+      {
+        name: "Second Example",
+        description: "Second Description",
+        latitude: 32.45,
+        longitude: -82.35
+      }
     ]).then(function() {
       // Request the route that returns all examples
       request.get("/api/art").end(function(err, res) {
@@ -42,14 +55,18 @@ describe("GET /api/examples", function() {
           .to.be.an("object")
           .that.includes({
             text: "First Example",
-            description: "First Description"
+            description: "First Description",
+            latitude: 33.78,
+            longitude: -84.35
           });
 
         expect(responseBody[1])
           .to.be.an("object")
           .that.includes({
             text: "Second Example",
-            description: "Second Description"
+            description: "Second Description",
+            latitude: 32.45,
+            longitude: -82.35
           });
 
         // The `done` function is used to end any asynchronous tests

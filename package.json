@@ -7,12 +7,12 @@
     "start": "node server.js",
     "lint": "eslint **/*.js --quiet",
     "fix": "eslint --fix .",
-    "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "test": "npm run lint && mocha -u tdd --reporter spec --exit"
   },
   "license": "ISC",
   "dependencies": {
     "csv": "^5.0.0",
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.5.3",
