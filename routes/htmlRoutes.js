@@ -1,10 +1,10 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // Load Art Info for index page
   app.get("/", function(req, res) {
     db.Art.findAll({}).then(function(allArt) {
-      // res.json(allArt);
+      // console.log(allArt);
       res.render("index", {
         artInfo: allArt
       });
@@ -14,6 +14,6 @@ module.exports = function(app) {
   // Load login page
   app.post("/login", function(req, res) {
     // res.json(allArt);
-    res.render("index");
+    res.render("login");
   });
 };

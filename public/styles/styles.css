@@ -16,3 +16,8 @@ h5 {
   background-color: orangered;
 }
 
+#art-info {
+  height: 100vh;
+  overflow: scroll;
+}
+
