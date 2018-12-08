@@ -1,16 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "art_db",
-    "host": "localhost",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "test_art_db",
-    "host": "localhost",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql",
     "logging": false
   },

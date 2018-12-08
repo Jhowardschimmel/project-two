@@ -1,4 +1,4 @@
-require("dotenv").config({ path: __dirname + ".env.test" });
+require("dotenv").config({ path: __dirname + ".env" });
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var server = require("../server");
