@@ -10,9 +10,9 @@ chai.use(chaiHttp);
 
 var request;
 
-describe("GET /api/examples", function() {
+describe("GET /api/art", function() {
   // Before each test begins, create a new request server for testing
-  // & delete all examples from the db
+  // & delete all art from the db
   beforeEach(function(done) {
     request = chai.request(server);
     db.sequelize.sync({ force: true }).then(function() {
@@ -20,8 +20,8 @@ describe("GET /api/examples", function() {
     });
   });
 
-  it("should find all examples", function(done) {
-    // Add some examples to the db to test with
+  it("should find all art", function(done) {
+    // Add some art to the db to test with
     db.Art.bulkCreate([
       {
         name: "First Example",
@@ -36,7 +36,7 @@ describe("GET /api/examples", function() {
         longitude: -82.35
       }
     ]).then(function() {
-      // Request the route that returns all examples
+      // Request the route that returns all art
       request.get("/api/art").end(function(err, res) {
         var responseStatus = res.status;
         var responseBody = res.body;
