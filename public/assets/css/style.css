@@ -7,6 +7,11 @@ body {
     src: url(../fonts/sprayme.ttf);
 }
 
+@font-face {
+    font-family: freshMarker;
+    src: url(../fonts/freshmarker.ttf);
+}
+
 .btn-blue {
     background-color: #0764A5;
     color: white;
@@ -65,16 +70,13 @@ body {
 /* Home Page */
 
 #leftDiv {
-    padding: 30px;
+    padding: 15px 0px 15px 0px;
 }
 
-#mapDiv {
-    height: 910px
-}
 
-#contentDiv {
-    padding: 50px 30px 0px 30px;
-}
+/* #contentDiv {
+    padding: 30px 30px 0px 30px;
+} */
 
 #imagesDiv {
     height: 300px;
@@ -83,4 +85,25 @@ body {
 .btn-block {
     font-family: myFont;
     font-size: 30px;
+}
+
+#submissionHeader {
+    font-family: myFont;
+    text-align: center;
+    color: #0764A5;
+}
+
+.input-group-text {
+    background-color: #0764A5;
+    color: white;
+}
+
+#artSubmitButton {
+    background-color: #0764A5;
+    color: white;
+}
+
+#artNameDisplay {
+    font-family: freshMarker;
+    text-align: center;
 }
