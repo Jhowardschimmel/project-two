@@ -21,6 +21,11 @@ describe("GET /api/art", function() {
   });
 
   it("should find all art", function(done) {
+    db.User.create([
+      {
+        id: 1
+      }
+    ]);
     // Add some art to the db to test with
     db.Art.bulkCreate([
       {
