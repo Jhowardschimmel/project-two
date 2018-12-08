@@ -1,12 +1,33 @@
+  <div class="modal fade" id="new-art-modal" tabindex="-1" role="dialog" aria-labelledby="postModal" aria-hidden="true"></div>
+  <div class="row">
+      <div class="col-8" id="map">
+      </div>
+    <div class="col-4" id="contentDiv">
+      <button type="button" class="btn btn-blue btn-lg btn-block m-2" id="postButton">New Art Submission</button>
+      <div class="card">
+        <div class="card-body">
+        <div id="art-info">
+          {{> art-info}}
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{!-- 
 <div class="container-fluid">
   <div class="row">
     <div class="col-9" id="map"></div>
     <div class="col-3" id="art-info">
-        {{> art-info}}
+      {{> art-info}}
     </div>
   </div>
-</div>
+</div> --}}
 
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 <script src="/js/map-data.js"></script>
+{{!-- <script src="/js/new-art.js"></script> --}}
