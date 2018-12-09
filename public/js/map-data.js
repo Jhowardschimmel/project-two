@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 window.onload = function () {
   var map = L.map("map").setView([33.78, -84.35], 13);
 
@@ -51,13 +52,12 @@ window.onload = function () {
       <div class='modal-dialog' role='document'>
         <div class='modal-content'>
           <div class='modal-header'>
-            <h5 class='modal-title' id='exampleModalLabel'>New Art Submission</h5>
+            <h1 class='modal-title' id='exampleModalLabel'>New Art Submission</h1>
             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
               <span aria-hidden='true'>&times;</span>
             </button>
           </div>
           <div class='modal-body'>
-            <h1 id='submissionHeader'>New Art Submission</h1>
             <small id='artHelp' class='form-text text-muted'>Can be left blank, will be listed as 'Untitled'</small>
               <div class='input-group mb-3'>
                 <div class='input-group-prepend'>
@@ -65,7 +65,7 @@ window.onload = function () {
                     <i class='far fa-palette'></i>
                   </span>
                 </div>
-                  <input id='artName' type='text' class='form-control' placeholder='Art Name' aria-label='artName' aria-describedby='artName'>
+                <input id='artName' type='text' class='form-control' placeholder='Art Name' aria-label='artName' aria-describedby='artName'>
               </div>
               <small id='artistHelp' class='form-text text-muted'>Can be left blank, will be listed as 'Unknown Artist'</small>
               <div class='input-group mb-3'>
@@ -83,13 +83,13 @@ window.onload = function () {
                   <i class='far fa-pencil-paintbrush'></i>
               </span>
             </div>
-              <textarea class='form-control' placeholder='Description' aria-label='With textarea'></textarea>
+              <textarea class='form-control' placeholder='Description' aria-label='With textarea' id="artDescription"></textarea>
             </div>
             <br>
             <div class='input-group mb-3'>
               <div class='custom-file'>
                 <input type='file' class='custom-file-input' id='inputGroupFile02'>
-                <label class='custom-file-label' for='inputGroupFile02' aria-describedby='inputGroupFileAddon02'>Add photos of Art</label>
+               <label class='custom-file-label' for='inputGroupFile02' aria-describedby='inputGroupFileAddon02'>Add photos of Art</label>
               </div>
             </div>
 
@@ -111,8 +111,8 @@ window.onload = function () {
             </small>
           </div>
           <div class='modal-footer'>
-           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-           <button type='button' class='btn btn-success' id='artSubmitButton'>Submit</button>
+           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
+           <button type='button' class='btn btn-success' id='artNextButton1'>Next</button>
           </div>
         </div>
       </div>
@@ -125,9 +125,12 @@ window.onload = function () {
       show: true
     });
 
-    $("#artSubmitButton").click(function() {
+    $("#artNextButton").click(function() {
       var artName = $("#artName").val();
-      console.log(artName);
+      var artistName = $("#artistName").val();
+      var artDescription = $("#artDescription").val();
+
+      console.log(artName + "by " + artistName + ". The category is " + artDescription);
     });
   });
 };
