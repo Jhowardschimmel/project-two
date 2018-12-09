@@ -3,7 +3,12 @@
 }
 
 #map {
-    height: 100vh;
+    height: 90vh;
+    background-color: beige;
+}
+
+#newPostMap {
+    height: 40vh;
     background-color: beige;
 }
 
@@ -13,7 +18,11 @@ h5 {
 }
 
 #art-info {
-  height: 100vh;
+  height: 90vh;
   overflow: scroll;
+}
+
+#header-bar {
+  height: 10vh;
 }
 
