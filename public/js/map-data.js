@@ -7,14 +7,14 @@ window.onload = function () {
       "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
   }).addTo(map);
 
-  map.on("click", function(event) {
+  map.on("click", function (event) {
     console.log(event.latlng);
   });
 
   $.ajax({
     url: "/api/art",
     type: "GET"
-  }).then(function(data) {
+  }).then(function (data) {
     var mapdata = data;
     console.log(mapdata);
     for (let i = 0; i < mapdata.length; i++) {
@@ -29,7 +29,7 @@ window.onload = function () {
             mapdata[i].User.username +
             "</em>"
         )
-        .on("click", function(e) {
+        .on("click", function (e) {
           console.log(e, mapdata[i].id);
           $("#art-info").html(
             "<h2 id='artNameDisplay'>" +
@@ -134,3 +134,4 @@ window.onload = function () {
     });
   });
 };
+
