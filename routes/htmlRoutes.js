@@ -1,26 +1,19 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // Load Art Info for index page
   app.get("/", function(req, res) {
-    db.Art.findAll({}).then(function() {
-      // res.json(allArt);
-      res.render("index");
+    db.Art.findAll({}).then(function(allArt) {
+      // console.log(allArt);
+      res.render("index", {
+        artInfo: allArt
+      });
     });
   });
+
+  // Load login page
+  app.post("/login", function(req, res) {
+    // res.json(allArt);
+    res.render("login");
+  });
 };
-
-//   // Load example page and pass in an example by id
-//   app.get("/example/:id", function(req, res) {
-//     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-//       res.render("example", {
-//         example: dbExample
-//       });
-//     });
-//   });
-
-//   // Render 404 page for any unmatched routes
-//   app.get("*", function(req, res) {
-//     res.render("404");
-//   });
-// };

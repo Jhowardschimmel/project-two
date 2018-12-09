@@ -1,6 +1,6 @@
-$("#signUpButton").click(function () {
-    console.log(`button clicked`);
-    $("#signUp-modal").html(`<div class='modal-dialog' role='document'>
+$("#signUpButton").click(function() {
+  console.log("button clicked");
+  $("#signUp-modal").html(`<div class='modal-dialog' role='document'>
     <div class='modal-content'>
       <div class='modal-header'>
         <h5 class='modal-title' id='exampleModalLabel'>Sign Up</h5>
@@ -13,13 +13,15 @@ $("#signUpButton").click(function () {
                     <div class='input-group-prepend'>
                         <span class='input-group-text'><i class='far fa-envelope'></i></span>
                     </div>
-                    <input type='text' id='signUp-email' class='form-control' placeholder='Email Address' aria-label='email' aria-describedby='basic-addon1'>
+                    <input type='text' id='signUp-email' class='form-control' placeholder='Email Address' 
+                    aria-label='email' aria-describedby='basic-addon1'>
                 </div>
                 <div class='input-group mb-3'>
                     <div class='input-group-prepend'>
                         <span class='input-group-text'><i class='fas fa-user'></i></span>
                     </div>
-                    <input type='text' id='signUp-user' class='form-control' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1'>
+                    <input type='text' id='signUp-user' class='form-control' placeholder='Username' 
+                    aria-label='Username' aria-describedby='basic-addon1'>
                 </div>
       </div>
       <div class='modal-footer'>
@@ -28,5 +30,5 @@ $("#signUpButton").click(function () {
       </div>
     </div>
     </div>
-    </div>`)
+    </div>`);
 });
