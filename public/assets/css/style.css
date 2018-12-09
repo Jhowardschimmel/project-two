@@ -2,10 +2,10 @@ body {
     background-image: url(../images/diamond_upholstery.png)
 }
 
-@font-face {
+/* @font-face {
     font-family: myFont;
-    src: url(../fonts/sprayme.ttf);
-}
+    src: url(/fonts/sprayme.ttf);
+} */
 
 @font-face {
     font-family: freshMarker;
