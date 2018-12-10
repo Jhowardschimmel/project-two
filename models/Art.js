@@ -2,7 +2,11 @@ module.exports = function(sequelize, DataTypes) {
   var Art = sequelize.define(
     "Art",
     {
-      name: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "Unknown"
+      },
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -13,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       artist: {
         type: DataTypes.STRING,
         allowNull: true,
+        defaultValue: "Unknown Artist",
         validate: {
           max: 50
         }
@@ -27,6 +32,9 @@ module.exports = function(sequelize, DataTypes) {
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()")
+      },
+      imageURL: {
+        defaultValue: "https://via.placeholder.com/200"
       },
       updatedAt: {
         type: DataTypes.DATE,
