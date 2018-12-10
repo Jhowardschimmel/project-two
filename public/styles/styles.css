@@ -31,3 +31,31 @@ header {
   height: 60px;
 }
 
+.input-group-text {
+  background-color: #0764A5;
+  color: white;
+}
+
+body {
+  background-image: url(diamond_upholstery.png);
+}
+
+#sidebar {
+  background-color: white;
+  opacity: 0.5;
+}
+
+#exampleModalLabel {
+  color: #0764A5;
+}
+
+#artNameDisplay {
+  text-align: center;
+  padding: 5px 0px 0px 0px;
+  color: #0764A5;
+}
+
+#buttons {
+  float: right;
+}
+

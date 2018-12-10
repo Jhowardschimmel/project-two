@@ -1,28 +1,23 @@
 /* eslint-disable max-len */
-window.onload = function () {
+window.onload = function() {
+  var map = L.map("map").locate({
+    setView: true,
+    maxZoom: 16
+  });
 
-  var map = L.map("map").locate({setView: true, maxZoom: 16});
-
-  // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //   attribution:
-  //     "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-  // }).addTo(map);
-
-  mapLink = `<a href="http://www.esri.com/">Esri</a>`;
-  wholink = `i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community`;
-
-  L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-      attribution: `&copy; ${mapLink}, ${wholink}`
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
   }).addTo(map);
 
-  map.on("click", function (event) {
+  map.on("click", function(event) {
     console.log(event.latlng);
   });
 
   $.ajax({
     url: "/api/art",
     type: "GET"
-  }).then(function (data) {
+  }).then(function(data) {
     var mapdata = data;
     console.log(mapdata);
     for (let i = 0; i < mapdata.length; i++) {
@@ -85,11 +80,6 @@ window.onload = function () {
     L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
       attribution: `&copy; ${mapLink}, ${wholink}`
     }).addTo(newPostMap);
-
-    // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    //   attribution:
-    //     "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-    // }).addTo(newPostMap);
 
     newPostMap.on("click", function(event) {
       selectLoc = event.latlng;
@@ -171,6 +161,7 @@ window.onload = function () {
         artCategory = $("#categorySelect option:selected").val();
         imageUrl = $("#imageURL").val();
         console.log(selectLoc);
+        location.reload();
 
         console.log(
           `${artName}, a piece of ${artCategory}, by ${artistName}. The description is ${artDescription}. The image URL is ${imageUrl}.`
@@ -185,7 +176,8 @@ window.onload = function () {
             category: artCategory,
             description: artDescription,
             latitude: selectLoc.lat,
-            longitude: selectLoc.lng
+            longitude: selectLoc.lng,
+            imageURL: imageURL
           }
         }).then(function() {
           console.log("Art posted!");
@@ -232,8 +224,7 @@ window.onload = function () {
             </div>
           </div>
         </div>
-    </div>`
-    );
+    </div>`);
 
     $("#login-modal").modal({
       backdrop: true,
