@@ -37,6 +37,7 @@ window.onload = function() {
           <em>Posted by ${mapdata[i].User.username}</em>`
         )
         .on("click", function(e) {
+          //Copy into Master Code 
           var imageHTML;
           console.log(mapdata[i].imageURL);
           switch (mapdata[i].imageURL) {
@@ -96,6 +97,8 @@ window.onload = function() {
               show: true
             });
           });
+
+          //******
         });
     }
   });
