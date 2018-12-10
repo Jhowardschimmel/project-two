@@ -1,11 +1,18 @@
 /* eslint-disable max-len */
 window.onload = function () {
 
-  var map = L.map("map").setView([33.78, -84.35], 13);
+  var map = L.map("map").locate({setView: true, maxZoom: 16});
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+  // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  //   attribution:
+  //     "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+  // }).addTo(map);
+
+  mapLink = `<a href="http://www.esri.com/">Esri</a>`;
+  wholink = `i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community`;
+
+  L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+      attribution: `&copy; ${mapLink}, ${wholink}`
   }).addTo(map);
 
   map.on("click", function (event) {
@@ -22,26 +29,21 @@ window.onload = function () {
       L.marker([mapdata[i].latitude, mapdata[i].longitude])
         .addTo(map)
         .bindPopup(
-          "<h5>" +
-          mapdata[i].name +
-          "</h5><h6>by " +
-          mapdata[i].artist +
-          "</h6><em>Posted by " +
-          mapdata[i].User.username +
-          "</em>"
+          `<h5>${mapdata[i].name}</h5>
+          <h6>by ${mapdata[i].artist}</h6>
+          <em>Posted by ${mapdata[i].User.username}</em>`
         )
         .on("click", function (e) {
           console.log(e, mapdata[i].id);
           $("#art-info").html(
-            "<img class='card-img-top' src='https://via.placeholder.com/200' alt='Card image cap'><h2 id='artNameDisplay'>" +
-            mapdata[i].name +
-            "</h2><hr>" +
-            mapdata[i].artist +
-            "</h6><small class='float-sm-right'>" +
-            mapdata[i].User.username +
-            "</small><hr><strong>Description: </strong><p>" +
-            mapdata[i].description +
-            "</p>"
+            `<img class='card-img-top' src='https://via.placeholder.com/200' alt='Card image cap'>
+              <h2 id='artNameDisplay'>${mapdata[i].name}</h2>
+              <hr>
+              <h6>${mapdata[i].artist}</h6>
+              <small class='float-sm-right'>${mapdata[i].User.username}</small>
+              <hr>
+              <strong>Description: </strong>
+              <p>${mapdata[i].description}</p>`
           );
         });
     }
@@ -50,7 +52,7 @@ window.onload = function () {
   $("#enter-add-view").click(function() {
     console.log("button clicked");
 
-    var selectLoc = [];
+    var selectLoc;
     var artName;
     var artistName;
     var artDescription;
@@ -62,12 +64,12 @@ window.onload = function () {
         <div class='modal-content p-3'>
           <div class='modal-header'>
             <h1 class='modal-title' id='exampleModalLabel'>New Art Submission</h1>
-            <h3>Select location on the map</h3>
             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
             </button>
           </div>
           <div class='modal-body'>
+          <h4>Where is the art located?</h4>
            <div id='newPostMap'></div>
           </div>
           <div class='modal-footer'>
@@ -78,17 +80,21 @@ window.onload = function () {
       </div>
     `);
 
-    var newPostMap = L.map("newPostMap").setView([33.78, -84.35], 13);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+    var newPostMap = L.map("newPostMap").locate({setView: true, maxZoom: 16});
+
+    L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+      attribution: `&copy; ${mapLink}, ${wholink}`
     }).addTo(newPostMap);
-        
+
+    // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    //   attribution:
+    //     "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+    // }).addTo(newPostMap);
+
     newPostMap.on("click", function(event) {
       selectLoc = event.latlng;
       console.log(selectLoc);
-      L.marker(selectLoc)
-        .addTo(newPostMap);
+      L.marker(selectLoc).addTo(newPostMap);
     });
 
     $("#artNextButton1").click(function() {
@@ -167,8 +173,7 @@ window.onload = function () {
         console.log(selectLoc);
 
         console.log(
-          artName +
-          "by " + artistName + ". The description is " + artDescription + "@ " + imageUrl + " " + artCategory
+          `${artName}, a piece of ${artCategory}, by ${artistName}. The description is ${artDescription}. The image URL is ${imageUrl}.`
         );
 
         $.ajax({
@@ -182,7 +187,10 @@ window.onload = function () {
             latitude: selectLoc.lat,
             longitude: selectLoc.lng
           }
-        }).then(console.log("Art posted!"));
+        }).then(function() {
+          console.log("Art posted!");
+          window.location.reload();
+        });
       });
     });
 
@@ -194,7 +202,7 @@ window.onload = function () {
     });
   });
 
-  $("#loginButton").click(function () {
+  $("#loginButton").click(function() {
     console.log("button clicked");
     $("#login-modal").html(`
       <div class='modal-dialog' role='document'>
@@ -234,6 +242,4 @@ window.onload = function () {
       show: true
     });
   });
-
-
 };

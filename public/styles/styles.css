@@ -1,9 +1,14 @@
+body {
+  height: 100vh;
+  background-color: beige;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 
 #map {
-    height: 90vh;
+    height: 100%;
     background-color: beige;
 }
 
@@ -18,11 +23,11 @@ h5 {
 }
 
 #art-info {
-  height: 90vh;
+  height: 100%;
   overflow: scroll;
 }
 
-#header-bar {
-  height: 10vh;
+header {
+  height: 60px;
 }
 
