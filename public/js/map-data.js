@@ -10,10 +10,6 @@ window.onload = function() {
       "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
   }).addTo(map);
 
-  map.on("click", function(event) {
-    console.log(event.latlng);
-  });
-
   $.ajax({
     url: "/api/art",
     type: "GET"
@@ -28,7 +24,7 @@ window.onload = function() {
           <h6>by ${mapdata[i].artist}</h6>
           <em>Posted by ${mapdata[i].User.username}</em>`
         )
-        .on("click", function (e) {
+        .on("click", function(e) {
           console.log(e, mapdata[i].id);
           $("#art-info").html(
             `<img class='card-img-top' src='https://via.placeholder.com/200' alt='Card image cap'>
@@ -75,10 +71,14 @@ window.onload = function() {
       </div>
     `);
 
-    var newPostMap = L.map("newPostMap").locate({setView: true, maxZoom: 16});
+    var newPostMap = L.map("newPostMap").locate({
+      setView: true,
+      maxZoom: 16
+    });
 
-    L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-      attribution: `&copy; ${mapLink}, ${wholink}`
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
     }).addTo(newPostMap);
 
     newPostMap.on("click", function(event) {
