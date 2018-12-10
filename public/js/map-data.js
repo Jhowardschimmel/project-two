@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-window.onload = function () {
+window.onload = function() {
 
   var map = L.map("map").setView([33.78, -84.35], 13);
 
@@ -8,14 +8,14 @@ window.onload = function () {
       "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
   }).addTo(map);
 
-  map.on("click", function (event) {
+  map.on("click", function(event) {
     console.log(event.latlng);
   });
 
   $.ajax({
     url: "/api/art",
     type: "GET"
-  }).then(function (data) {
+  }).then(function(data) {
     var mapdata = data;
     console.log(mapdata);
     for (let i = 0; i < mapdata.length; i++) {
@@ -83,12 +83,10 @@ window.onload = function () {
       attribution:
         "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
     }).addTo(newPostMap);
-        
     newPostMap.on("click", function(event) {
       selectLoc = event.latlng;
       console.log(selectLoc);
-      L.marker(selectLoc)
-        .addTo(newPostMap);
+      L.marker(selectLoc).addTo(newPostMap);
     });
 
     $("#artNextButton1").click(function() {
@@ -165,10 +163,11 @@ window.onload = function () {
         artCategory = $("#categorySelect option:selected").val();
         imageUrl = $("#imageURL").val();
         console.log(selectLoc);
+        location.reload();
 
         console.log(
           artName +
-          "by " + artistName + ". The description is " + artDescription + "@ " + imageUrl + " " + artCategory
+          " by " + artistName + ". The description is " + artDescription + "@ " + imageUrl + " " + artCategory
         );
 
         $.ajax({
@@ -180,7 +179,8 @@ window.onload = function () {
             category: artCategory,
             description: artDescription,
             latitude: selectLoc.lat,
-            longitude: selectLoc.lng
+            longitude: selectLoc.lng,
+            imageURL: imageURL
           }
         }).then(console.log("Art posted!"));
       });
