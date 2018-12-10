@@ -1,28 +1,31 @@
 /* eslint-disable max-len */
-window.onload = function () {
-
+window.onload = function() {
   var map = L.map("map").locate({setView: true, maxZoom: 16});
 
-  // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //   attribution:
-  //     "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-  // }).addTo(map);
+  //With OpenStreets Base Map
 
-  mapLink = `<a href="http://www.esri.com/">Esri</a>`;
-  wholink = `i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community`;
-
-  L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-      attribution: `&copy; ${mapLink}, ${wholink}`
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
   }).addTo(map);
 
-  map.on("click", function (event) {
-    console.log(event.latlng);
-  });
+  //With Sat Base Map
+
+  // mapLink = "<a href='http://www.esri.com/'>Esri</a>";
+  // wholink =
+  //   "i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community";
+
+  // L.tileLayer(
+  //   "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  //   {
+  //     attribution: `&copy; ${mapLink}, ${wholink}`
+  //   }
+  // ).addTo(map);
 
   $.ajax({
     url: "/api/art",
     type: "GET"
-  }).then(function (data) {
+  }).then(function(data) {
     var mapdata = data;
     console.log(mapdata);
     for (let i = 0; i < mapdata.length; i++) {
@@ -33,18 +36,66 @@ window.onload = function () {
           <h6>by ${mapdata[i].artist}</h6>
           <em>Posted by ${mapdata[i].User.username}</em>`
         )
-        .on("click", function (e) {
+        .on("click", function(e) {
+          var imageHTML;
+          console.log(mapdata[i].imageURL);
+          switch (mapdata[i].imageURL) {
+            case undefined:
+              imageHTML = `
+                <button class='image-add-button'>
+                  <img class='card-img-top' src='${mapdata[i].imageURL}' alt='Card image cap'>
+                </button>`;
+              break;
+
+            default:
+              imageHTML = `<img class='card-img-top' src='https://images.pexels.com/photos/935785/pexels-photo-935785.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' alt='Card image cap'>`;
+          }
+
           console.log(e, mapdata[i].id);
           $("#art-info").html(
-            `<img class='card-img-top' src='https://via.placeholder.com/200' alt='Card image cap'>
+            `${imageHTML}
+              <hr>
               <h2 id='artNameDisplay'>${mapdata[i].name}</h2>
               <hr>
               <h6>${mapdata[i].artist}</h6>
-              <small class='float-sm-right'>${mapdata[i].User.username}</small>
               <hr>
               <strong>Description: </strong>
-              <p>${mapdata[i].description}</p>`
+              <p>${mapdata[i].description}</p>
+              <small class='float-sm-right'>Posted by ${mapdata[i].User.username}</small>`
           );
+
+          //ImageURL update
+
+          $(".image-add-button").click(function() {
+            console.log("image add button clicked");
+            $("#image-add-modal").html(`
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content p-3'>
+                  <div class='modal-header'>
+                    <h1 class='modal-title' id='exampleModalLabel'>Add URL to Art Image</h1>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='input-group mb-3'>
+                      <div class='input-group-prepend'>
+                        <span class='input-group-text'>
+                          <i class='fas fa-image'></i>
+                        </span>
+                      </div>
+                      <input id='imageURL' type='text' class='form-control' placeholder='Image URL' aria-label='artName' aria-describedby='artName'>
+                  </div>
+                </div>
+              </div>
+            `);
+
+            $("#image-add-modal").modal({
+              backdrop: true,
+              keyboard: true,
+              focus: true,
+              show: true
+            });
+          });
         });
     }
   });
@@ -82,14 +133,17 @@ window.onload = function () {
 
     var newPostMap = L.map("newPostMap").locate({setView: true, maxZoom: 16});
 
-    L.tileLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-      attribution: `&copy; ${mapLink}, ${wholink}`
-    }).addTo(newPostMap);
+    // L.tileLayer(
+    //   "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    //   {
+    //     attribution: `&copy; ${mapLink}, ${wholink}`
+    //   }
+    // ).addTo(newPostMap);
 
-    // L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    //   attribution:
-    //     "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-    // }).addTo(newPostMap);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+    }).addTo(newPostMap);
 
     newPostMap.on("click", function(event) {
       selectLoc = event.latlng;
@@ -232,8 +286,7 @@ window.onload = function () {
             </div>
           </div>
         </div>
-    </div>`
-    );
+    </div>`);
 
     $("#login-modal").modal({
       backdrop: true,
