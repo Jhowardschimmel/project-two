@@ -241,7 +241,7 @@ window.onload = function() {
             description: artDescription,
             latitude: selectLoc.lat,
             longitude: selectLoc.lng,
-            imageURL
+            imageURL: imageURL
           }
         }).then(function() {
           console.log("Art posted!");
