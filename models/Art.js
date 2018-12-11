@@ -34,10 +34,8 @@ module.exports = function(sequelize, DataTypes) {
         defaultValue: sequelize.literal("NOW()")
       },
       imageURL: {
-        type: DateType.STRING,
-        validate: {
-          isURL: true
-        }
+        type: DataTypes.STRING,
+        allowNull: true
       },
       updatedAt: {
         type: DataTypes.DATE,

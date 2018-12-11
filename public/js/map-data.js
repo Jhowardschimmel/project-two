@@ -25,17 +25,82 @@ window.onload = function() {
           <em>Posted by ${mapdata[i].User.username}</em>`
         )
         .on("click", function(e) {
+          var imageURL = mapdata[i].imageURL;
+          var imageHTML;
+          console.log(imageURL);
+          switch (imageURL) {
+            case null:
+              imageHTML = `
+                <button class='image-add-button'>
+                  <img class='card-img-top' src='https://static.thenounproject.com/png/396915-200.png' alt='Card image cap'>
+                </button>`;
+              break;
+            default:
+              imageHTML = `<img class='card-img-top' src='${imageURL}' alt='Card image cap'>`;
+          }
+
           console.log(e, mapdata[i].id);
           $("#art-info").html(
-            `<img class='card-img-top' src='https://via.placeholder.com/200' alt='Card image cap'>
+            `${imageHTML}
+              <hr>
               <h2 id='artNameDisplay'>${mapdata[i].name}</h2>
               <hr>
               <h6>${mapdata[i].artist}</h6>
-              <small class='float-sm-right'>${mapdata[i].User.username}</small>
               <hr>
               <strong>Description: </strong>
-              <p>${mapdata[i].description}</p>`
+              <p>${mapdata[i].description}</p>
+              <small class='float-sm-right'>Posted by ${mapdata[i].User.username}</small>`
           );
+
+          //ImageURL update
+
+          $(".image-add-button").click(function() {
+            console.log("image add button clicked");
+            $("#image-add-modal").html(`
+              <div class='modal-dialog' role='document'>
+                <div class='modal-content p-3'>
+                  <div class='modal-header'>
+                    <h1 class='modal-title' id='exampleModalLabel'>Add URL to Art Image</h1>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                  </div>
+                  <div class='input-group mb-3'>
+                      <div class='input-group-prepend'>
+                        <span class='input-group-text'>
+                          <i class='fas fa-image'></i>
+                        </span>
+                      </div>
+                      <input id='addImageURL' type='text' class='form-control' placeholder='Image URL' aria-label='artName' aria-describedby='artName'>
+                  </div>
+                  <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
+                    <button type='button' class='btn btn-success' id='add-image-url'>Submit</button>
+                </div>
+                </div>
+              </div>
+            `);
+
+            $("#image-add-modal").modal({
+              backdrop: true,
+              keyboard: true,
+              focus: true,
+              show: true
+            });
+
+            $("#add-image-url").click(function() {
+              $.ajax({
+                url: "/api/art/" + mapdata[i].id,
+                type: "PUT",
+                data: {
+                  imageURL: $("#addImageURL").val()
+                }
+              }).then(function() {
+                console.log("adde image URL to" + mapdata[i].id);
+                window.location.reload();
+              });
+            });
+          });
         });
     }
   });
@@ -142,9 +207,9 @@ window.onload = function() {
             </div>
             <select class='custom-select' id='categorySelect'>
                 <option selected>Category</option>
+                <option value='Mural'>Mural</option>
                 <option value='Graffiti'>Graffiti</option>
                 <option value='Sculpture'>Sculpture</option>
-                <option value='Painting'>Painting</option>
             </select>
           </div>
         </div>
@@ -161,7 +226,6 @@ window.onload = function() {
         artCategory = $("#categorySelect option:selected").val();
         imageUrl = $("#imageURL").val();
         console.log(selectLoc);
-        location.reload();
 
         console.log(
           `${artName}, a piece of ${artCategory}, by ${artistName}. The description is ${artDescription}. The image URL is ${imageUrl}.`
@@ -177,7 +241,7 @@ window.onload = function() {
             description: artDescription,
             latitude: selectLoc.lat,
             longitude: selectLoc.lng,
-            imageURL: imageURL
+            imageURL
           }
         }).then(function() {
           console.log("Art posted!");

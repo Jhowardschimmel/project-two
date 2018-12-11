@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background-color: beige;
+  background-image: url(diamond_upholstery.png);
 }
 
 .list-group-item {
@@ -36,13 +36,9 @@ header {
   color: white;
 }
 
-body {
-  background-image: url(diamond_upholstery.png);
-}
-
 #sidebar {
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 #exampleModalLabel {
