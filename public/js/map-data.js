@@ -224,7 +224,7 @@ window.onload = function() {
         artistName = $("#artistName").val();
         artDescription = $("#artDescription").val();
         artCategory = $("#categorySelect option:selected").val();
-        imageUrl = $("#imageURL").val();
+        artImageURL = $("#imageURL").val();
         console.log(selectLoc);
 
         console.log(
@@ -241,7 +241,7 @@ window.onload = function() {
             description: artDescription,
             latitude: selectLoc.lat,
             longitude: selectLoc.lng,
-            imageURL: imageURL
+            imageURL: artImageURL
           }
         }).then(function() {
           console.log("Art posted!");
@@ -249,6 +249,25 @@ window.onload = function() {
         });
       });
     });
+
+    //     $.ajax({
+    //       url: "/api/art",
+    //       type: "POST",
+    //       data: {
+    //         name: artName,
+    //         artist: artistName,
+    //         category: artCategory,
+    //         description: artDescription,
+    //         latitude: selectLoc.lat,
+    //         longitude: selectLoc.lng,
+    //         imageURL: imageURL
+    //       }
+    //     }).then(function() {
+    //       console.log("Art posted!");
+    //       window.location.reload();
+    //     });
+    //   });
+    // });
 
     $("#new-art-modal").modal({
       backdrop: true,
