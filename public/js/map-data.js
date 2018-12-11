@@ -45,11 +45,12 @@ window.onload = function() {
               <hr>
               <h2 id='artNameDisplay'>${mapdata[i].name}</h2>
               <hr>
-              <h6>${mapdata[i].artist}</h6>
+              <h6>By ${mapdata[i].artist}</h6>
               <hr>
               <strong>Description: </strong>
               <p>${mapdata[i].description}</p>
-              <small class='float-sm-right'>Posted by ${mapdata[i].User.username}</small>`
+              <small class='float-sm-right'>Posted by ${mapdata[i].User.username}</small>
+              <br>`
           );
 
           //ImageURL update
@@ -161,8 +162,8 @@ window.onload = function() {
             <span aria-hidden='true'>&times;</span>
           </button>
         </div>
-        
-        <small id='artHelp' class='form-text text-muted'>Can be left blank, will be listed as 'Untitled'</small>
+        <br>
+        <small class='text-muted float-right'>Leave blank if unknown</small>
             <div class='input-group mb-3'>
               <div class='input-group-prepend'>
                 <span class='input-group-text'>
@@ -171,7 +172,7 @@ window.onload = function() {
               </div>
               <input id='artName' type='text' class='form-control' placeholder='Art Name' aria-label='artName' aria-describedby='artName'>
             </div>
-            <small id='artistHelp' class='form-text text-muted'>Can be left blank, will be listed as 'Unknown Artist'</small>
+            <small class='text-muted float-right'>Leave blank if unknown</small>
             <div class='input-group mb-3'>
               <div class='input-group-prepend'>
                 <span class='input-group-text'>
@@ -180,7 +181,7 @@ window.onload = function() {
             </div>
           <input type='text' class='form-control' id='artistName' placeholder='Artist Name' aria-label='artistName' aria-describedby='artistName'>
         </div>
-
+        <small class='text-muted float-right'>Required</small>
         <div class='input-group'>
           <div class='input-group-prepend'>
             <span class='input-group-text'>
@@ -190,7 +191,7 @@ window.onload = function() {
             <textarea class='form-control' placeholder='Description' aria-label='With textarea' id="artDescription"></textarea>
           </div>
           <br>
-
+          <small class='text-muted float-right'>Can be left blank and added later</small>
           <div class='input-group mb-3'>
               <div class='input-group-prepend'>
                 <span class='input-group-text'>
@@ -210,6 +211,9 @@ window.onload = function() {
                 <option value='Mural'>Mural</option>
                 <option value='Graffiti'>Graffiti</option>
                 <option value='Sculpture'>Sculpture</option>
+                <option value='Architecture'>Architecture</option>
+                <option value='Fountains'>Fountains</option>
+                <option value='Uncategorized'>Uncategorized</option> 
             </select>
           </div>
         </div>
@@ -293,13 +297,13 @@ window.onload = function() {
                 <div class='input-group-prepend'>
                     <span class='input-group-text'><i class='fas fa-envelope'></i></span>
                 </div>
-                <input type='text' id='new-user-email' class='form-control' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1'>
+                <input type='text' id='new-user-email' class='form-control' placeholder='Email' aria-label='Username' aria-describedby='basic-addon1'>
             </div>
             <div class='input-group mb-3'>
                 <div class='input-group-prepend'>
                     <span class='input-group-text'><i class='fas fa-user'></i></span>
                 </div>
-                <input type='text' id='new-username' class='form-control' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1'>
+                <input type='text' id='new-username' class='form-control' placeholder='Password' aria-label='Username' aria-describedby='basic-addon1'>
             </div>
             <div class='modal-footer'>
                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>

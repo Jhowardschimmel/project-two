@@ -1,20 +1,31 @@
-<header>
-  <div class="container-fluid">
-  <div class="row" id="header-bar"><button class="btn btn-success btn-lg m-2" id="loginButton">Login</button>    <button type="button" class="btn btn-primary btn-lg m-2" id="enter-add-view">
-      New Art Submission
-    </button></div>
-  </div>
-</header>
 <div class="modal fade" id="new-art-modal" tabindex="-1" role="dialog" aria-labelledby="postModal" aria-hidden="true"></div>
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="postModal" aria-hidden="true"></div>
-<div class="modal fade" id="image-add-modal" tabindex="-1" role="dialog" aria-labelledby="postModal" aria-hidden="true"></div>
 
 <div class="container-fluid">
+<div class="row" id="header-bar">
+    <div class="col-8" id="title">
+      <h1><i class="far fa-paint-brush">
+        </i> Community Art Curator <i class="fas fa-map-marker-alt"></i>
+      </h1>
+    </div>
+    <div class="col-4" id="buttons">
+    <button class="btn btn-success btn-lg m-2 float-sm-right" id="loginButton">
+      <i class="fas fa-sign-in"></i>
+      Login
+    </button>
+    <button type="button" class="btn btn-primary btn-lg m-2 float-right" id="enter-add-view">
+      <i class="fas fa-plus"></i> 
+      New Art Submission
+    </button>
+</div>
+</div>
 <div class="row">
   <div class="col-8" id="map"></div>
   <div class="col-4" id="sidebar">
     <div id="art-info">
       {{> art-info}}
+    </div>
+    <div id="art-info-footer">
     </div>
   </div>
 </div>
@@ -30,4 +41,4 @@
 
 <script src="/js/map-data.js"></script>
 {{!-- <script src="/js/login.js"></script> --}}
-{{!-- <script src="/js/new-art.js"></script> --}}
+{{!-- <script src="/js/new-art.js"></script> --}} 

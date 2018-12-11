@@ -1,6 +1,7 @@
 body {
   height: 100vh;
   background-image: url(diamond_upholstery.png);
+  overflow: hidden;
 }
 
 .list-group-item {
@@ -23,7 +24,8 @@ h5 {
 }
 
 #art-info {
-  height: 100%;
+  padding: 30px 10px 30px 10px;
+  height: 90%;
   overflow: scroll;
 }
 
@@ -51,12 +53,26 @@ header {
   color: #0764A5;
 }
 
-#buttons {
-  float: right;
-}
-
 .image-add-button {
-  width: 100%;
+  width: 90%;
   float: center;
 }
 
+#art-info-footer {
+  height: 40px;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+ #title,
+ .instructions {
+  text-align: center;
+  color: #0764A5
+} 
+
+.instructions {
+  font-size: 1.3em;
+}
