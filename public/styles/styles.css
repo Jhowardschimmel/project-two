@@ -55,3 +55,8 @@ header {
   float: right;
 }
 
+.image-add-button {
+  width: 100%;
+  float: center;
+}
+
