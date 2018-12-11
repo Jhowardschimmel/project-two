@@ -1,9 +1,14 @@
+body {
+  height: 100vh;
+  background-image: url(diamond_upholstery.png);
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 
 #map {
-    height: 90vh;
+    height: 100%;
     background-color: beige;
 }
 
@@ -18,12 +23,12 @@ h5 {
 }
 
 #art-info {
-  height: 90vh;
+  height: 100%;
   overflow: scroll;
 }
 
-#header-bar {
-  height: 10vh;
+header {
+  height: 60px;
 }
 
 .input-group-text {
@@ -31,13 +36,9 @@ h5 {
   color: white;
 }
 
-body {
-  background-image: url(diamond_upholstery.png);
-}
-
 #sidebar {
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 #exampleModalLabel {

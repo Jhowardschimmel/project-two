@@ -39,9 +39,10 @@ module.exports = function(app) {
   app.put("/api/art/:id", function(req, res) {
     db.Art.update(req.body, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function(artData) {
+      console.log(req.body);
       res.json(artData);
     });
   });
