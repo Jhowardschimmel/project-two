@@ -76,3 +76,8 @@ h1 {
 .instructions {
   font-size: 1.3em;
 }
+
+@font-face {
+    font-family: freshMarker;
+    src: url(../fonts/freshmarker.ttf);
+}
